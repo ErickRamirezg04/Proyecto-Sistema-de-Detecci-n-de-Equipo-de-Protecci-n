@@ -1,52 +1,55 @@
-# Sistema de Vision Artificial para la Auditoria Automatizada de Equipo de Proteccion Personal mediante YOLO
+# 🛡️ Sistema de Visión Artificial para la Auditoría Automatizada de Equipo de Protección Personal mediante YOLO
 
-## Integrantes del Equipo
+## 👥 Integrantes del Equipo
 * **Erick Oswaldo Ramirez Gonzalez** - Registro: 23310402
 * **Victor Habib Flores Alfaro** - Registro: 23310377
 
 ---
 
-## 1. Objetivo del Proyecto
-Aplicar conceptos de Vision Artificial mediante el entrenamiento de un modelo de la familia YOLO (You Only Look Once) para detectar en tiempo real si el personal operativo en entornos industriales porta correctamente su Equipo de Proteccion Personal (Casco de seguridad, Chaleco antirreflejante y Lentes de proteccion), mitigando riesgos de accidentes y automatizando auditorias de seguridad ocupacional.
+## 🎯 1. Objetivo del Proyecto
+Aplicar conceptos de Visión Artificial mediante el entrenamiento de un modelo de la familia YOLO (You Only Look Once) para detectar en tiempo real si el personal operativo en entornos industriales porta correctamente su Equipo de Protección Personal (Casco de seguridad, Chaleco antirreflejante y Lentes de protección), mitigando riesgos de accidentes y automatizando auditorías de seguridad ocupacional.
 
 ---
 
-## 2. Caso de Estudio: Implementacion en Entorno Real
+## 🏭 2. Caso de Estudio: Implementación en Entorno Real
 
-### A. Problema a Resolver
-En plantas manufactureras, de ensamble o zonas de construccion, el factor humano y la complacencia operativa derivan frecuentemente en omisiones criticas de seguridad, tales como ingresar a zonas de riesgo sin casco o chaleco. Las auditorias visuales realizadas por supervisores de seguridad (HSE) son intermitentes, costosas y propensas a errores por fatiga. 
+### ⚠️ A. Problema a Resolver
+En plantas manufactureras, de ensamble o zonas de construcción, el factor humano y la complacencia operativa derivan frecuentemente en omisiones críticas de seguridad, tales como ingresar a zonas de riesgo sin casco o chaleco. Las auditorías visuales realizadas por supervisores de seguridad (HSE) son intermitentes, costosas y propensas a errores por fatiga. 
 
-La solucion propuesta consiste en un sistema automatizado de videovigilancia inteligente continuo que actue como un filtro de control de acceso y monitor de areas comunes, identificando infracciones en milisegundos y restringiendo el paso o emitiendo alertas fisicas antes de que ocurra un siniestro.
+La solución propuesta consiste en un sistema automatizado de videovigilancia inteligente continuo que actúe como un filtro de control de acceso y monitor de áreas comunes, identificando infracciones en milisegundos y restringiendo el paso o emitiendo alertas físicas antes de que ocurra un siniestro.
 
-### B. Arquitectura de Hardware Propuesta
-Para desplegar el modelo entrenado en la linea de produccion o accesos, se requiere la siguiente arquitectura fisica:
+### ⚙️ B. Arquitectura de Hardware Propuesta
+Para desplegar el modelo entrenado en la línea de producción o accesos, se requiere la siguiente arquitectura física:
 
-1. **Dispositivos de Captura (Camaras):** Camaras IP de grado industrial con resolucion Full HD (1080p) posicionadas a una altura de 2.5 metros con un angulo de inclinacion de 45 grados en los torniquetes de entrada y pasillos principales para asegurar una vista clara del cuerpo completo del trabajador.
-2. **Unidad de Procesamiento Central (Edge Computing):** Servidor local capaz de procesar multiples flujos de video en tiempo real a mas de 30 FPS utilizando aceleracion de hardware (TensorRT).
-3. **Hardware de Actuacion y Maquinaria:** Torniquetes electro-mecanicos de acceso equipados con relevadores de control de compuerta, y una interfaz de alerta visual/auditiva compuesta por una torreta de iluminacion industrial de tres estados (Verde/Rojo) y una bocina piezoelectrica instalada sobre el punto de control.
+* **🎥 Dispositivos de Captura (Cámaras):** Cámaras IP de grado industrial con resolución Full HD (1080p) posicionadas a una altura de 2.5 metros con un ángulo de inclinación de 45 grados en los torniquetes de entrada y pasillos principales para asegurar una vista clara del cuerpo completo del trabajador.
+* **🖥️ Unidad de Procesamiento Central (Edge Computing):** Servidor local capaz de procesar múltiples flujos de video en tiempo real a más de 30 FPS utilizando aceleración de hardware (TensorRT).
+* **🚧 Hardware de Actuación y Maquinaria:** Torniquetes electro-mecánicos de acceso equipados con relevadores de control de compuerta, y una interfaz de alerta visual/auditiva compuesta por una torreta de iluminación industrial de tres estados (Verde/Rojo) y una bocina piezoeléctrica instalada sobre el punto de control.
 
-### C. Flujo de Funcionamiento del Sistema (Flujo de Trabajo)
-El ciclo de ejecucion logica del sistema de vision artificial opera bajo el siguiente proceso secuencial:
+### 🔄 C. Flujo de Funcionamiento del Sistema (Flujo de Trabajo)
+El ciclo de ejecución lógica del sistema de visión artificial opera bajo el siguiente proceso secuencial:
 
-1. **Fase de Aproximacion y Captura:** El trabajador se aproxima al torniquete de acceso para ingresar a la planta. La camara IP captura el flujo de video continuo y lo transmite al servidor Edge mediante una direccion de red privada bajo el protocolo RTSP.
-2. **Fase de Inferencia e Identificacion:** El script de ejecucion en Python intercepta el frame del video en tiempo real, normaliza las dimensiones de la imagen y la procesa a traves de la red neuronal del modelo YOLO entrenado. El algoritmo genera mapas de caracteristicas y extrae las Bounding Boxes (Cajas delimitadoras), clasificando los objetos en las categorias definidas: Casco, Chaleco o Lentes.
-3. **Fase de Logica de Validacion Colectiva:** Para cada objeto clasificado como Persona, el sistema verifica automaticamente que existan cajas delimitadoras de Casco y Chaleco superpuestas en el mismo espacio vectorial.
-4. **Fase de Actuacion Fisica Automatica:**
-   * **Escenario de Cumplimiento (Acceso Autorizado):** Si el modelo detecta la presencia de todos los elementos de seguridad requeridos asociados al cuerpo del trabajador, el software envia un pulso digital mediante pines GPIO al relevador del torniquete para desbloquear el paso e ilumina la torreta en color verde.
-   * **Escenario de Infraccion (Acceso Denegado):** Si el modelo detecta a la persona pero identifica la ausencia de casco o chaleco, el torniquete permanece bloqueado mecanicamente. Simultaneamente, se activa la torreta en color rojo parpadeante junto a la alerta sonora, y el sistema envia de forma automatica una captura de pantalla con las cajas de infraccion marcadas via Webhook al canal de supervision de seguridad industrial.
+1. **🚶‍♂️ Fase de Aproximación y Captura:** El trabajador se aproxima al torniquete de acceso para ingresar a la planta. La cámara IP captura el flujo de video continuo y lo transmite al servidor Edge mediante una dirección de red privada bajo el protocolo RTSP.
+2. **🧠 Fase de Inferencia e Identificación:** El script de ejecución en Python intercepta el frame del video en tiempo real, normaliza las dimensiones de la imagen y la procesa a través de la red neuronal del modelo YOLO entrenado. El algoritmo genera mapas de características y extrae las Bounding Boxes (Cajas delimitadoras), clasificando los objetos en las categorías definidas: Casco, Chaleco o Lentes.
+3. **🔍 Fase de Lógica de Validación Colectiva:** Para cada objeto clasificado como Persona, el sistema verifica automáticamente que existan cajas delimitadoras de Casco y Chaleco superpuestas en el mismo espacio vectorial.
+4. **⚡ Fase de Actuación Física Automática:**
+   * ✅ **Escenario de Cumplimiento (Acceso Autorizado):** Si el modelo detecta la presencia de todos los elementos de seguridad requeridos asociados al cuerpo del trabajador, el software envía un pulso digital mediante pines GPIO al relevador del torniquete para desbloquear el paso e ilumina la torreta en color verde.
+   * ❌ **Escenario de Infracción (Acceso Denegado):** Si el modelo detecta a la persona pero identifica la ausencia de casco o chaleco, el torniquete permanece bloqueado mecánicamente. Simultáneamente, se activa la torreta en color rojo parpadeante junto a la alerta sonora, y el sistema envía de forma automática una captura de pantalla con las cajas de infracción marcadas vía Webhook al canal de supervisión de seguridad industrial.
 
 ---
 
-## 3. Instrucciones de Ejecucion y Configuracion
+## 🚀 3. Instrucciones de Ejecución y Configuración
 
-Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostracion localmente:
+Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostración localmente:
 
-### Prerrequisitos
+### 📌 Prerrequisitos
 * Python 3.9 o superior instalado.
-* Tarjeta grafica dedicada (Opcional, para ejecucion optima por CUDA).
+* Tarjeta gráfica dedicada (Opcional, para ejecución óptima por CUDA).
 
-### Paso 1: Clonar el repositorio
-git clone https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git
-
-### Paso 2: Instalar dependencias necesarias 
-pip install -r requirements.txt
+### 🛠️ Paso 1: Clonar el repositorio
+```bash
+git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
+```
+### 📦 Paso 2: Instalar dependencias necesarias
+```bash
+git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
+```
