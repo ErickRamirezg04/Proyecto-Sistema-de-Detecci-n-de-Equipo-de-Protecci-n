@@ -46,6 +46,7 @@ Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostraci
 * Tarjeta grafica dedicada (Opcional, para ejecucion optima por CUDA).
 
 ### Paso 1: Clonar el repositorio
-```bash
-git clone [https://github.com/TU_USUARIO/TU_REPOSITORIO.git](https://github.com/TU_USUARIO/TU_REPOSITORIO.git)
-cd TU_REPOSITORIO
+git clone https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git
+
+### Paso 2: Instalar dependencias necesarias 
+pip install -r requirements.txt
