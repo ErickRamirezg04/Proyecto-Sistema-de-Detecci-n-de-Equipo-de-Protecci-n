@@ -62,6 +62,8 @@ Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostraci
 ### 🛠️ Paso 1: Clonar el repositorio
 ```bash
 git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
+```
+
 ### 📦 Paso 2: Instalar dependencias necesarias
 ```bash
 git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
