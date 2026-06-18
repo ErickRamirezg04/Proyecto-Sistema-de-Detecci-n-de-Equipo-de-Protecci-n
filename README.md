@@ -11,7 +11,21 @@ Aplicar conceptos de Visión Artificial mediante el entrenamiento de un modelo d
 
 ---
 
-## 🏭 2. Caso de Estudio: Implementación en Entorno Real
+## 📊 2. Dataset Utilizado
+Para el entrenamiento de este modelo se utilizó un conjunto de datos optimizado para la detección de elementos de seguridad industrial. Debido a las limitaciones de almacenamiento de GitHub para archivos de gran volumen, las imágenes originales no se encuentran alojadas directamente en este repositorio.
+
+* **Dataset:** Safety Helmet Computer Vision Dataset (1,375 imágenes)
+* **Origen:** [Roboflow Universe - v10](https://universe.roboflow.com/vega-n6rdu/safety-helmet-tsqdw/dataset/10)
+
+### 📥 Instrucciones de descarga del Dataset:
+1. Ingrese al enlace de Roboflow proporcionado arriba.
+2. Haga clic en el botón **"Download Dataset"** (o "Export").
+3. Seleccione el formato estrictamente como **YOLOv8**.
+4. Elija la opción **"Download ZIP"** para guardarlo localmente o **"show code"** para obtener el snippet de descarga directa en Google Colab.
+
+---
+
+## 🏭 3. Caso de Estudio: Implementación en Entorno Real
 
 ### ⚠️ A. Problema a Resolver
 En plantas manufactureras, de ensamble o zonas de construcción, el factor humano y la complacencia operativa derivan frecuentemente en omisiones críticas de seguridad, tales como ingresar a zonas de riesgo sin casco o chaleco. Las auditorías visuales realizadas por supervisores de seguridad (HSE) son intermitentes, costosas y propensas a errores por fatiga. 
@@ -22,7 +36,7 @@ La solución propuesta consiste en un sistema automatizado de videovigilancia in
 Para desplegar el modelo entrenado en la línea de producción o accesos, se requiere la siguiente arquitectura física:
 
 * **🎥 Dispositivos de Captura (Cámaras):** Cámaras IP de grado industrial con resolución Full HD (1080p) posicionadas a una altura de 2.5 metros con un ángulo de inclinación de 45 grados en los torniquetes de entrada y pasillos principales para asegurar una vista clara del cuerpo completo del trabajador.
-* **🖥️ Unidad de Procesamiento Central (Edge Computing):** Servidor local capaz de procesar múltiples flujos de video en tiempo real a más de 30 FPS utilizando aceleración de hardware (TensorRT).
+* **🖥️ Unidad de Procesamiento Central (Edge Computing):** Servidor local capaz de procesar múltiples flujos de video en tiempo real a más de 30 FPS utilizando acelaración de hardware (TensorRT).
 * **🚧 Hardware de Actuación y Maquinaria:** Torniquetes electro-mecánicos de acceso equipados con relevadores de control de compuerta, y una interfaz de alerta visual/auditiva compuesta por una torreta de iluminación industrial de tres estados (Verde/Rojo) y una bocina piezoeléctrica instalada sobre el punto de control.
 
 ### 🔄 C. Flujo de Funcionamiento del Sistema (Flujo de Trabajo)
@@ -37,7 +51,7 @@ El ciclo de ejecución lógica del sistema de visión artificial opera bajo el s
 
 ---
 
-## 🚀 3. Instrucciones de Ejecución y Configuración
+## 🚀 4. Instrucciones de Ejecución y Configuración
 
 Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostración localmente:
 
@@ -48,7 +62,6 @@ Siga estos pasos para replicar el entorno de desarrollo y ejecutar la demostraci
 ### 🛠️ Paso 1: Clonar el repositorio
 ```bash
 git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
-```
 ### 📦 Paso 2: Instalar dependencias necesarias
 ```bash
 git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
