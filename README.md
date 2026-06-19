@@ -66,5 +66,5 @@ git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-E
 
 ### 📦 Paso 2: Instalar dependencias necesarias
 ```bash
-git clone [https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git](https://github.com/ErickRamirezg04/Proyecto-Sistema-de-Detecci-n-de-Equipo-de-Protecci-n.git)
+pip install -r requirements.txt
 ```
